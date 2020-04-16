@@ -135,15 +135,21 @@ Hotkey, MButton, off
 ;█████████████████████████████████████████
 ;██████████████Terraria███████████████████
 #IfWinActive, ahk_exe Terraria.exe
-Launch_App1::
-SysGet, ScreenRes, Monitor
-WinSet, Style, -0xC40000, ahk_exe Terraria.exe
-WinMove, ahk_exe Terraria.exe, , 0, 0, %ScreenResRight%, %ScreenResBottom%
-return
 XButton2:: ; Healing Potion
   send, {h down}
   sleep, 10
   send, {h up}
+  return
+Launch_App1::
+  send, {r down}
+  sleep, 20
+  send, {r up}
+  return
+Launch_Media:: ; Grapple
+  send, {e down}
+  return
+Launch_Media UP::
+  send, {e up}
   return
 Launch_Mail:: ; Double Tap 'S'
   send, {s down}
@@ -234,6 +240,21 @@ return
 *Launch_Mail::7
 *XButton1::8
 *XButton2::9
+#IfWinActive
+;█████████████████████████████████████████
+;██████████████ Wizard101 ████████████████
+#IfWinActive, ahk_exe WizardGraphicalClient.exe
+Launch_Media::send, {NumLock}
+Launch_Mail::
+send, {s Down}
+Loop {
+  If GetKeyState(Launch_Mail, P) := 0
+    break
+} 
+send, {s up}
+return
+Launch_App1::Esc
+MButton::x
 #IfWinActive
 ;█████████████████████████████████████████
 ;█████████████████████████████████████████

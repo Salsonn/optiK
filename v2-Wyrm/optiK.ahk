@@ -37,7 +37,6 @@ ALT+219 = █
 
 ;{██ AHK Variables
 DetectHiddenWindows, On
-SendMode, Input
 SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 2
 CoordMode, Mouse, Screen
@@ -73,20 +72,26 @@ return
 	XButton2::Down
 	#IfWinActive
 	#If btn("Media_Next", "ahk_group EDGame") and EDShipName == "The Corvid"
-	Media_Next::send, {Down}{Up}{Left 2}
-	+Media_Next::send, {Right}
+		Media_Next::send, {Down}{Up}{Left 2}
+		+Media_Next::send, {Right}
 	#If
 	#If btn("Media_Next", "ahk_group EDGame") and EDShipName == "Poker of Justice"
-	Media_Next::send, {Down}{Up}{Right 2}
+		Media_Next::send, {Down}{Up}{Right 2}
+	#If
+	#If btn("Media_Next", "ahk_group EDGame")
+		Media_Next::send, {Right}
 	#If
 	#If btn("Media_Prev", "ahk_group EDGame")
-	+Media_Prev::send, {Down}{Left 2}
+		Media_Prev::send, {Left}
+		+Media_Prev::send, {Down}{Left 2}
 	#If
 	#If btn("Volume_Up", "ahk_group EDGame")
-	Volume_Up::send, {Down}{Up 2}
+		Volume_Up::send, {Down}{Up 2}
+		*Volume_Up::send, {Down}{Up 2}
 	#If
 	#If btn("Volume_Down", "ahk_group EDGame")
-	Volume_Down::send, {Down}
+		Volume_Down::send, u
+		*Volume_Down::send, u
 	#If
 ;}
 
@@ -98,8 +103,8 @@ return
 	~*RButton Up::gosub ico
 ;}██
 	
-	;{██ Double Click
-	AppsKey & LButton::Click 2
+	;{██ Double & Triple Click
+	AppsKey & MButton::Click 2
 	*AppsKey::AppsKey
 	;}
 	
@@ -109,7 +114,7 @@ return
 	MouseClick, WU,,, 2 - GetKeyState("LWin") + GetKeyState("LAlt"),, D
 	If !GetKeyState("XButton1", "P")
 		return
-	sleep, 100
+	sleep, 72
 	}
 	MsgBox, uh ohhh
 	*XButton2:: ;Scroll Down
@@ -117,7 +122,7 @@ return
 	MouseClick, WD,,, 2 - GetKeyState("LWin") + GetKeyState("LAlt"),, D
 	If !GetKeyState("XButton2", "P")
 		return
-	sleep, 100
+	sleep, 72
 	}
 	;}
 
@@ -135,13 +140,13 @@ return
 	Volume_Down::return
 	#if
 	#if btn("Media_Play_Pause")
-	Media_Play_Pause::return
+	Media_Play_Pause::^v
 	#if
 	#if btn("Volume_Mute")
-	Volume_Mute::return
+	Volume_Mute::^c
 	#if
 	#if btn("Media_Stop")
-	Media_Stop::return
+	Media_Stop::^x
 	#if
 	;}
 	
@@ -155,16 +160,18 @@ btn(mBtn, wind:="a") { ;	Updates tray icon based on LButton and RButton states
 	return 0
 }
 
-ReadEDLogs(dir, searchString, freshestFile:=0) {
+ReadEDLogs(dir, searchString, freshestFile:=0, lineFound:=0) {
 Loop, %dir%\Frontier Developments\Elite Dangerous\*.log						;
 	If (A_LoopFileTimeCreated > freshestFile)								; Finds most recent log file
 		out := A_LoopFileFullPath, freshestFile := A_LoopFileTimeCreated	;
 loop, Read, %out%									;
 	if A_LoopReadLine contains %searchString%		; Searches recent log for
 		if (InStr(A_LoopReadLine, searchString))	; line containing searchString
-		    Last_Line := A_LoopReadLine				;
+		    lineFound := A_LoopReadLine				;
+if (lineFound == 0)
+	Return "null"
 loop, Read, ShipList.ini					; Searches above line
-	if Last_Line contains %A_LoopReadLine%	; for string contained
+	if lineFound contains %A_LoopReadLine%	; for string contained
 		Return A_LoopReadLine				; in Shiplist.ini
 }
 
@@ -185,9 +192,11 @@ reset: ;{		Reloads optiK
 EDUpdate: ;{	Rechecks ED logs for change in current ship
 	If !WinExist("ahk_group EliteDangerous") {
 		Menu, Tray, Disable, Edit Elite Ship List
+		SetKeyDelay, 10
 		return ; skips if Elite Dangerous isn't running
 	}
 	Menu, Tray, Enable, Edit Elite Ship List
+	SetKeyDelay, 32
 	EDShipName := ReadEDLogs(SavedGamesDir, chr(34) . "ShipName")
 	return
 ;}

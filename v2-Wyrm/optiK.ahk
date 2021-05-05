@@ -11,7 +11,7 @@
 █████  ██   ██  ████   ████   █████  ██████  ██████  ███  ██████   | || || |    | |    | |\ |     | |   | |
 ███████       ██████         ██████  ██████  ██████  ████  █████   | || || |    | |    | | \ \__  | |   | |
 ████████████████████  ██████████████████████████████████████████   |_______|    \_/    |/   \__/  |/     \|
-version 3.0 
+version 2.0-beta 
 Used with a Redragon Samsara2 (M902-RGB)
 ALT+219 = █
 */
@@ -49,9 +49,9 @@ CoordMode, Mouse, Screen
 ;{██ Initialization
 	;{██ Tray Menu
 	Menu,	Tray,	Add,		Edit Elite Ship List,	shipList ; Add Elite .ini edit button
-	Menu,	Tray,	Add,		optiK 3.0 (Wyrm), 		reset ;Add reload button
-	Menu,	Tray,	Default,	optiK 3.0 (Wyrm) ;Make reload default action
-	Menu,	Tray,	Disable,	optiK 3.0 (Wyrm) ;Grey out reload button
+	Menu,	Tray,	Add,		optiK 2.0 (Wyrm), 		reset ;Add reload button
+	Menu,	Tray,	Default,	optiK 2.0 (Wyrm) ;Make reload default action
+	Menu,	Tray,	Disable,	optiK 2.0 (Wyrm) ;Grey out reload button
 	Menu,	Tray,	Click, 		1 ;Set reload to single click
 	Menu,	Tray,	Tip,		Click to reload optiK ;Icon mouseover text
 	gosub, ico ;} Update tray icon

@@ -1,0 +1,36 @@
+Mode A
+1. LButton
+2. RButton
+3. MButton
+4. XButton1 (Backward)
+5. XButton2 (Forward)
+6. Launch_App1 (My Computer)
+7. Double Click
+8. Launch_Media
+9. Launch_Mail
+10.Shift
+
+Mode B
+1. LButton
+2. RButton
+3. RGB On/Off
+4. XButton1
+5. XButton2
+6. DPI Loop
+7. Key Off
+8. Key Off
+9. Key Off
+10.Shift
+
+Report Rate: 1000
+
+RGB/DPI
+Blue	2000
+White	2000
+Red	2000
+Teal	2000
+Mode: Standard
+Parameter: 15%
+Effect: RGB Effect
+
+Fire Delay: 50ms?

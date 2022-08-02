@@ -10,7 +10,7 @@
 █████  ██   ██  ████   ████   █████  ██████  █████  ██  ███████   | |   | | | |       | |\ |    | |   | |
 ███████       ██████         ██████  ██████  █████  ███  ██████   | |   | | | |____/\ | | \ \__ | |___| |
 ████████████████████  █████████████████████████████████████████   |/     \| |_______/ |/   \__/ \_______/
-version 3.0.97 
+version 3.1
 Used with a Logitech G502 SE (HERO) and a Logitech G502 LIGHTSPEED
 ALT+219 = █
 */
@@ -31,6 +31,15 @@ ALT+219 = █
       |	 /		 /
 	   \/_______/
 */
+
+;{██ Compiler Directives
+	; @Ahk2Exe-UpdateManifest 0, Ringdown optiK, 3.1
+	;@Ahk2Exe-SetMainIcon optiK.exe.ico
+	;@Ahk2Exe-AddResource ico\optiK00.ico, 100
+	;@Ahk2Exe-AddResource ico\optiK01.ico, 101
+	;@Ahk2Exe-AddResource ico\optiK10.ico, 110
+	;@Ahk2Exe-AddResource ico\optiK11.ico, 111
+;}
 
 ;{██ AHK Settings
 	;#Warn All, Off
@@ -304,8 +313,14 @@ return
 	}
 
 	ico(*) {
+		;@Ahk2Exe-IgnoreBegin
 		icon := "ico\optiK" . GetKeyState("LButton", "P") . GetKeyState("RButton", "P") . ".ico"
 		TraySetIcon(icon)
+		;@Ahk2Exe-IgnoreEnd
+		/*@Ahk2Exe-Keep
+		icon := 1 + GetKeyState("RButton", "P") + (GetKeyState("LButton", "P") * 2)
+		TraySetIcon(A_ScriptFullPath, icon )
+		*/
 		return
 	}
 

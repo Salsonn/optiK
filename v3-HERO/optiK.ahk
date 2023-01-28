@@ -72,11 +72,54 @@ ALT+219 = █
 return
 ;}██
 
+;{██ Global Hotkeys
+	;~ F13 & F14::
+	;~ F13 & F15::
+	;~ F13 & F16::
+	;~ F13 & F17::
+	;~ F13 & F18::
+	;~ return
+	;{██ Tray Icon Control
+		~*LButton::gosub ico
+		~*LButton Up::gosub ico
+		~*RButton::gosub ico
+		~*RButton Up::gosub ico
+	;}██
+	
+	;{██ Double & Triple Click
+		$*F18::Click 2
+	;}
+	
+	;{██ Speed Scrolling
+		*F14:: ;Scroll Down
+		Loop, {
+		MouseClick, WD,,, 1 + GetKeyState("LAlt"),, D
+		If !GetKeyState("F14", "P")
+			return
+		sleep, 72
+		}
+		*F15:: ;Scroll Up
+		Loop, {
+		MouseClick, WU,,, 1 + GetKeyState("LAlt"),, D
+		If !GetKeyState("F15", "P")
+			return
+		sleep, 72
+		}
+	;}
+
+	;{██ Disable Unused Buttons
+		F16::^v
+		F17::^c
+		;F19::^x
+	;}
+	
+;}
+
 ;{██ Elite Dangerous
 	#If EDandShip("HAMMERHEAD CORVETTE")
 		
 	#If
-	#If EDandShip("The Corvid")
+	#If EDandShip("THE asdfCORVID")
 		WheelRight::send, {Down}{Up}{Left 2}
 		+WheelRight::send, {Right}
 		WheelLeft::send, {Down}{Left 2}
@@ -97,6 +140,18 @@ return
 	#If EDandShip("Poker of Justice")
 		WheelRight::send, {Down}{Up}{Right 2}
 	#If
+	#If EDandShip("540 TON MICROWAVE") or EDandShip("THE CORVID")
+		WheelRight::send, {Down}{Up}{Right 3}
+		+WheelRight::send, {Down}{Left}{Right 3}
+		!WheelRight::send, {Right}
+		F18::send, {Down}{Right}{Up 3}
+		+F18::send, {Down}{Left}{Up 3}
+		!F18::send, {Up}
+		!+F18::send, {Down}{Up 2}
+		WheelLeft::send, {Down}{Right}{Left 3}
+		+WheelLeft::send, {Down}{Up}{Left 3}
+		!WheelLeft::send, {Left}
+	#If
 	#IfWinActive ahk_group EDGame
 		*WheelLeft::send, {Left}
 		+WheelLeft::send, {Down}{Left 2}
@@ -111,7 +166,7 @@ return
 		;g::h
 		;+g::send, {h Down}{h Up}{LShift Down}h{LShift Up}
 		;!g::send, {h Down}{h Up}{LAlt Down}h{LAlt Up}
-		+v::send, op
+		;!f::send, op
 		^Media_Play_Pause::9
 		^Media_Next::0
 		^Media_Prev::8
@@ -179,47 +234,17 @@ return
 	#IfWinActive
 ;}
 
-;{██ Global Hotkeys
-	F13 & F14::
-	F13 & F15::
-	F13 & F16::
-	F13 & F17::
-	F13 & F18::
-	return
-	;{██ Tray Icon Control
-		~*LButton::gosub ico
-		~*LButton Up::gosub ico
-		~*RButton::gosub ico
-		~*RButton Up::gosub ico
-	;}██
-	
-	;{██ Double & Triple Click
-		*F18::Click 2
-	;}
-	
-	;{██ Speed Scrolling
-		*F14:: ;Scroll Down
-		Loop, {
-		MouseClick, WD,,, 1 + GetKeyState("LAlt"),, D
-		If !GetKeyState("F14", "P")
-			return
-		sleep, 72
-		}
-		*F15:: ;Scroll Up
-		Loop, {
-		MouseClick, WU,,, 1 + GetKeyState("LAlt"),, D
-		If !GetKeyState("F15", "P")
-			return
-		sleep, 72
-		}
-	;}
+;{██ TrackMania Nations Forever
+	#IfWinActive, ahk_exe TmForever.exe
+		Space::send, {Down Down}
+		Space Up::send, {Down Up}
+;}
 
-	;{██ Disable Unused Buttons
-		F16::^v
-		F17::^c
-		;F19::^x
-	;}
-	
+;{██ Prey
+	#IfWinActive, ahk_exe Prey.exe
+		*F15::XButton1
+		*F14::XButton2
+	#IfWinActive
 ;}
 
 ;{██ Functions 

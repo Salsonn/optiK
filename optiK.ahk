@@ -23,16 +23,7 @@ View the README at https://github.com/SalSonn/optiK for more information.
 */
 
 /* PLANNING
-    Handling of device scripts
-        Separate scripts for each device?
-            Detect ahk script vs exe
-                Allow choosing between them?
-                Would have to include AHK binaries...eww
-        Merge all into one
-            Add legacy mode for older, janky scripts
-    Update old scripts to ahk2?
-    Script settings (ex. ED Ship List)
-        Convert everything into an .ini file? 
+    Update old scripts to ahk2? Maybe just compile them to .exe
 */
 
 ;{██ Compiler Directives

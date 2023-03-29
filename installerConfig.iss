@@ -29,6 +29,9 @@ SetupIconFile=C:\Users\Caleb\Code\.ahk\optiK\ico\optiK.exe.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+UninstallDisplayName=optiK
+UninstallDisplayIcon={app}\optiK.exe
+CloseApplications=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

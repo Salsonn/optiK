@@ -1,5 +1,5 @@
 # Ringdown optiK 
-### Peripheral Management made efficent
+### Peripheral management made efficent
 ___
 Ringdown optiK allows for a user to have a specific configuration set up for each peripheral in use, that activates and deactivates based on if the device is connected. It supports having multiple devices under one profile, and profiles can be associated with any program of your choosing.
 

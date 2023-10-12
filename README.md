@@ -1,5 +1,5 @@
 # Ringdown optiK 
-### Peripheral management made efficent
+### Peripheral management made efficient
 ___
 Ringdown optiK allows for a user to have a specific configuration set up for each peripheral in use, that activates and deactivates based on if the device is connected. It supports having multiple devices under one profile, and profiles can be associated with any program of your choosing.
 
@@ -31,13 +31,13 @@ In the case of wireless USB devices (with a dongle), the process can be more dif
 
 ## Background
 
-Ringdown optiK began as "Zealot", an AutoHotkey script that handled a basic scrolling macro for my Zelotes T80 gaming mouse (a generic Chinese model) that I got for a whopping $10 back before I was even in High School. As my proficiency with AutoHotkey expanded, so did Zealot, and eventually I got a LUOM G10 mouse (also generic) which had more buttons, so I expanded my script to handle more. That mouse was well-loved to the point that it began falling apart, so I replaced it with a Redragon M902 gaming mouse, which I had for about a week before snagging a Logitech G502 Hero SE on sale. While I _do_ still have the LUOM G10 hiding somewhere, the G502 is my true daily driver, with a G602 that I keep in my backpack on the same keybindings.
+Ringdown optiK began as "Zealot", an AutoHotkey script that handled a basic scrolling macro for my Zelotes T80 gaming mouse (a generic Chinese model) that I got for a whopping $10 back before I was even in High School. As my proficiency with AutoHotkey expanded, so did Zealot, and eventually I got a LUOM G10 mouse (also generic) which had more buttons, so I expanded my script to handle more. That mouse was well-loved to the point that it began falling apart, so I replaced it with a Redragon M902 gaming mouse, which I had for about a week before snagging a Logitech G502 Hero SE on sale. While I _do_ still have the LUOM G10 hiding somewhere, the G502 is my true daily driver, with a G602 that I keep in my backpack on the same key bindings.
 
 Here I am on a software page talking about hardware...
 
-For a time, I was actively using both the Zelotes and LUOM mice, so I added code to both their scripts that let me manually switch between the two, and while I wanted to automate the switching process I couldn't find a way to do so. Eventually, I gave the Zelotes mouse to my cousin, but the idea of automatic profile switching still stuck with me.
+For a time, I was actively using both the Zelotes and LUOM mice, so I added code to both their scripts that let me manually switch between the two, and while I wanted to automate the switching process, I couldn't find a way to do so. Eventually, I gave the Zelotes mouse to my cousin, but the idea of automatic profile switching still stuck with me.
 
-Fast forward to when I got the G502, I added some code that would loop frequently to check for certain conditions. It was sloppy, and I knew it was sloppy, but I didn't know enough about AutoHotkey to make it less so. In lieu of that I looked back at my idea of automatically switching profiles and realized that whatever mechansim I'd potentially find to implement _that_ feature could likely make my code less sloppy, so I did more digging, but ultimately got nowhere.
+Fast forward to when I got the G502, I added some code that would loop frequently to check for certain conditions. It was sloppy, and I knew it was sloppy, but I didn't know enough about AutoHotkey to make it less so. In lieu of that I looked back at my idea of automatically switching profiles and realized that whatever mechanism I'd potentially find to implement _that_ feature could likely make my code less sloppy, so I did more digging, but ultimately got nowhere.
 
 Fast forward to my Junior year of college, and a off-the-cuff Google search led me to exactly the information I needed to make both of my ideas happen, so I set to overhauling my little optiK script into a fully-fledged, lightweight application...and then pivoted into making it something that just initiated and managed what _had_ been optiK. Because it is now a wrapper, it has the potential to go beyond AutoHotkey scripts and manage larger programs like Logitech's GHub and Corsair's iCUE, which are immensely powerful, but also massive memory hogs. A lightweight utility to start and stop such programs on lower-memory systems has a lot of utility.
 
@@ -56,7 +56,7 @@ Now that I have a dedicated installer (thank you INNO for having an easy mode), 
     * Current method doesn't actually use child process functionality
         * Is that even possible to implement?
     * Current method falls apart if the profile's program restarts itself (and gets a new Process ID)
-* Overhall of profile management
+* Overhaul of profile management
     * Currently pretty not-smart, just enables a profile when one or more devices are connected, and disables when all devices are disconnected.
     * No way to override that lasts beyond a re-detect of devices
 
